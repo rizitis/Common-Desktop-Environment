@@ -1,2 +1,3 @@
 # Common-Desktop-Environment
-CDE Slackbuild for Slackware
+CDE SlackBuild script for Slackware
+Read README.Slackware
