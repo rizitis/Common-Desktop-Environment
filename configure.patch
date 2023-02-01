@@ -1,0 +1,10 @@
+--- cde-2.5.1/configure	2023-02-01 20:38:51.184086675 +0200
++++ configure-1	2023-02-01 11:01:25.986125304 +0200
+@@ -23346,7 +23346,6 @@
+           fi
+         else
+                               found_dir=
+-          found_la=
+           found_so=
+           found_a=
+           eval libname=\"$acl_libname_spec\"    # typically: libname=lib$name

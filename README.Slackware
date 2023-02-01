@@ -1,0 +1,19 @@
+This is my first try to build CDE in Slackware-current.
+I didnt setup things complete, I was only foccus to build...
+When have time I will try to fix services running properly, for now its builded ok but need a lot of work that I didnt...
+At least you can boot in CDE Desktop...next things TODO (A LOT)  
+
+Since we have to work with libtools which not building if la. files missing from Slackware, and since Slackware dont have .la files in /lib(64) dir 
+I patched configure file. It was the only way I founded to escape from .la Hell...
+Also I didnt build DOCS, if you want to build them remove first patch in SlackBuild script. 
+
+After installation finish, on first boot you should go in /etc/dt/contrib folder, read and do what you think right.
+Also after installation, if everything went right you will find the entry cde in your display-manager menu.
+Note, cde its not working so far for me in runlever 3 (xwmconfig) but works in runlevel 4 (gdm for me). 
+I dont use cde`s display-manager for login, if you want to use it I think its builded fine but you must go in the folder /etc/dt/contrib after first boot and do what it needed. In that case (I think) you should create a /etc/rc.d/rc.4.local and found how to start it, probably (/usr/dt/bin/dtlogin) or (/etc/init.d/dtlogin start) make it executable and reboot... 
+But first read /etc/contrib/rc/linux folder...
+
+
+Also visit this pages https://myria.math.aegean.gr/~atsol/newpage-en/software/cde/index.html 
+You will find nice things about CDE, I didnt find time to check them, but I will do it soon...
+ 
