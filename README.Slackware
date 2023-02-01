@@ -9,7 +9,7 @@ Also I didnt build DOCS, if you want to build them remove first patch in SlackBu
 
 After installation finish, on first boot you should go in /etc/dt/contrib folder, read and do what you think right.
 Also after installation, if everything went right you will find the entry cde in your display-manager menu.
-Note, cde its not working so far for me in runlever 3 (xwmconfig) but works in runlevel 4 (gdm for me). 
+Note, cde its not working so far for me in runlevel 3 (xwmconfig) but works in runlevel 4 (gdm for me). 
 I dont use cde`s display-manager for login, if you want to use it I think its builded fine but you must go in the folder
 /etc/dt/contrib after first boot and do what it needed. 
 In that case (I think) you should create a /etc/rc.d/rc.4.local and found how to start it,
