@@ -87,8 +87,11 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+filename="cde.desktop"
+Clear=Exec=/usr/dt/bin/Xsession
+NOClear=Exec=/usr/bin/startcdesession.sh
 # Optional patch not building docs... 
-patch -Np1 -i $CWD/Makefile-am.patch
+patch -Np1 -i "$CWD"/Makefile-am.patch
 # Your application will probably need different configure flags;
 # these are provided as an example only.
 # Be sure to build only shared libraries unless there's some need for
@@ -98,13 +101,31 @@ CXXFLAGS="$SLKCFLAGS" \
 # Compile the application and install it into the $PKG directory
 ./autogen.sh
 # Escape from .la as deps. Libtools not building whitout this...lalalalala
-patch -Np1 -i $CWD/configure.patch
+patch -Np1 -i "$CWD"/configure.patch
 ./configure
 make all WARNINGS_AS_ERRORS=y "$JOBS"
 mkdir -p /etc/dt
 sh contrib/desktop2dt/desktop2dt -i -a
+#cp contrib/desktopentry/cde.desktop /usr/share/xsessions/
+#sed -i "s/$Clear/$NOClear/" /usr/share/xsessions/$filename
 cp -R contrib/ /etc/dt/
-cp contrib/desktopentry/cde.desktop /usr/share/xsessions/
+cp "$CWD"/startcdesession.sh /usr/bin/ 
+chmod +x /usr/bin/startcdesession.sh
+mkdir -p /usr/dt/config/xfonts/el_GR.UTF-8/
+cp "$CWD"/fonts.dir /usr/dt/config/xfonts/el_GR.UTF-8/
+cp "$CWD"/fonts.alias /usr/dt/config/xfonts/el_GR.UTF-8/
+cp -R "$CWD"/xxkb /usr/share/
+cp  "$CWD"/XXkb /etc/X11/app-defaults/XXkb
+mkdir -p /etc/dt/appconfig/types/C/
+cp "$CWD"/ltsp-usb.fp /etc/dt/appconfig/types/C/
+mkdir -p /etc/dt/appconfig/icons/C/
+cp -R "$CWD"/usb-icons /etc/dt/appconfig/icons/C/
+echo 127.0.0.1  "$(hostname )"  /etc/hosts
+echo echo ""$(ip addr show dev $(ip r | grep -oP 'default.*dev \K\S*') | grep -oP '(?<=inet )[^/]*(?=/)') $(hostname )""  /etc/hosts
+rm -rf /var/dt/appconfig/appmanager/"$USER"-"$USER"-0
+mkdir -p /var/dt/appconfig/appmanager/"$USER"-"$USER"-0
+find /var/dt/appconfig/appmanager/ -depth -not -path "/var/dt/appconfig/appmanager/$USER-$USER-0" |sed '$ d' | while read line; do sudo ln -s "$line" "/var/dt/appconfig/appmanager/$USER-$USER-0" ; done
+cp "$CWD"/cde.desktop /usr/share/xsessions/
 make install DESTDIR="$PKG"
 
 
