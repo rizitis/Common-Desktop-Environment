@@ -5,6 +5,6 @@ DOWNLOAD="https://downloads.sourceforge.net/project/cdesktopenv/src/cde-2.5.1.ta
 MD5SUM=""
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES=""
+REQUIRES="openspades udevil vlc zenity xxkb"
 MAINTAINER="Anagnostakis Ioannis"
 EMAIL="rizitis@gmail.com"
