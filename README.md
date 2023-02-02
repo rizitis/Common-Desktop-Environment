@@ -1,4 +1,6 @@
-# Common-Desktop-Environment
+# Common-Desktop-Environment | under construction
+Not READY YET
+
 CDE SlackBuild script for Slackware64-current
 Read README.Slackware
 <img
