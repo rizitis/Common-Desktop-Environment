@@ -1,0 +1,1 @@
+ devmon --info-on-mount --sync --exec-on-drive "/usr/dt/bin/dtfile -folder %d" --exec-on-video "vlc --verbose=-1 dvd://%f" --exec-on-audio "vlc --verbose=-1 cdda://%f" &

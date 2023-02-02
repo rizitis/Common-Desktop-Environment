@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# After installation AND BEFORE BOOT run this script in Slackware
+# ***************************************
+# DO NOT RUN IT AS ROOT, run it as USER.* 
+# ***************************************
+# Anagnostakis Ioannis 2/2023 GR Crete
+
+
+USER="$(whoami)"
+fdevmon="killall devmon"
+fsetxkb=" setxkbmap -option grp:alt_shift_toggle -option terminate:ctrl_alt_bksp -option grp_led:scroll -option eurosign:5 -option eurosign:e -option ctrl:swapcaps -layout us,gr"
+fkillx="killall xxkb"
+fxx="xxkb&"
+
+
+mkdir -p /home/"$USER"/.dt/
+touch /home/"$USER"/.dt/dtwmrc
+cat dtwmrc.txt > /home/"$USER"/.dt/dtwmrc
+mkdir -p /home/"$USER"/.dt/sessions/
+touch /home/"$USER"/.dt/sessions/sessionetc
+echo "$fstxkb" >> /home/"$USER"/.dt/sessions/sessionetc
+echo "$fkillx" >> /home/"$USER"/.dt/sessions/sessionetc
+echo "$fxx" >> /home/"$USER"/.dt/sessions/sessionetc
+cat devmon.txt > /home/"$USER"/.dt/sessions/sessionetc
+touch /home/"$USER"/.dt/sessions/sessionexit
+echo "$fdevmon" >> /home/"$USER"/.dt/sessions/sessionexit
+chmod +x /home/"$USER"/.dt/sessions/sessione*
+echo "export TERM=xterm-256color" >> /home/"$USER"/.bashrc
+mkdir -p home/"$USER"/.dtprofile
+cp /usr/dt/config/sys.dtprofile home/"$USER"/.dtprofile
+
+
+
+

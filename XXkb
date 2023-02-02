@@ -1,0 +1,76 @@
+XXkb.image.path: /usr/share/xxkb
+
+XXkb.group.base: 1
+XXkb.group.alt: 2
+
+XXkb.mainwindow.enable: no
+!XXkb.mainwindow.geometry: 48x48
+!XXkb.mainwindow.image.1: en48.xpm
+!XXkb.mainwindow.image.2: ru48.xpm
+!XXkb.mainwindow.image.3: su48.xpm
+!XXkb.mainwindow.image.4:
+XXkb.mainwindow.geometry: 24x24
+XXkb.mainwindow.image.1: en_gr.s.xpm
+XXkb.mainwindow.image.2: gr_gr.s.xpm
+XXkb.mainwindow.image.3: en_gr.s.xpm
+XXkb.mainwindow.image.4:
+
+XXkb.mainwindow.label.font: -misc-*-r-*-20-*
+!AT placement on a 1920 wide screen
+!XXkb.mainwindow.geometry: 48x48+1872+0
+
+
+XXkb.*.border.color: black
+XXkb.*.border.width: 0
+
+XXkb.*.label.foreground: white
+XXkb.*.label.background: blue4
+XXkb.*.label.enable: no
+
+! XXkb.mainwindow.type:
+! possible values - normal, top, tray, wmaker
+XXkb.mainwindow.type: normal
+!XXkb.mainwindow.type: top
+
+XXkb.button.enable: yes
+!AT
+XXkb.button.geometry: 28x15-53+9
+!XXkb.button.geometry: 15x15-60+7
+XXkb.button.image.1: empty.xpm
+XXkb.button.image.2: gr.xpm
+XXkb.button.image.3: en_txt.xpm
+XXkb.button.image.4:
+XXkb.button.label.font: -misc-*-r-*-13-*
+
+XXkb.controls.add_when_start: yes
+XXkb.controls.add_when_create: yes
+XXkb.controls.add_when_change: no
+XXkb.controls.focusout: no
+XXkb.controls.two_state: yes
+XXkb.controls.button_delete: yes
+XXkb.controls.button_delete_and_forget: yes
+XXkb.controls.mainwindow_delete: yes
+
+XXkb.mousebutton.1.reverse: no
+XXkb.mousebutton.3.reverse: no
+
+XXkb.bell.enable: no
+XXkb.bell.percent: -50
+
+XXkb.ignore.reverse: no
+
+! XXkb.app_list.<match>.<action>: <list>
+! <match> is one of "wm_class_class", "wm_class_name", "wm_name", "property"
+! <action> is one of "ignore", "start_alt", "alt_groupM" (M - 1..4) 
+! For example:
+!   XXkb.app_list.wm_class_class.ignore: *clock Fvwm*
+!   XXkb.app_list.wm_class_name.start_alt: licq
+!
+!  ignore windows in KDE tray
+!  XXkb.app_list.property.ignore: _KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR
+
+!AT ignore CDE panel
+XXkb.app_list.wm_class_name.ignore: FrontPanel
+XXkb.app_list.wm_name.ignore: Personal*Applications Mail Personal*Printers Desktop*Style Help
+
+

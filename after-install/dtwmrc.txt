@@ -1,0 +1,41 @@
+Keys DtKeyBindings
+{
+   Alt<Key>Menu                 root|icon|window        f.toggle_frontpanel
+    Alt<Key>t                   root|icon|window        f.exec dtterm
+    Alt<Key>Right               root|icon|window        f.next_workspace
+    Alt<Key>Left                root|icon|window        f.prev_workspace
+    Alt<Key>u root|icon|window|ifkey  f.exec "devmon --unmount-removable"
+    <Key>XF86AudioLowerVolume   root|icon|window|ifkey  f.exec "amixer -D pulse sset Master 5%-"
+    <Key>XF86AudioRaiseVolume   root|icon|window|ifkey  f.exec "amixer -D pulse sset Master 5%+"
+    <Key>XF86AudioMute          root|icon|window|ifkey  f.exec "amixer -D pulse sset Master toggle"
+}
+
+Menu Internet
+{
+Firefox f.exec "firefox&"
+Thunderbird f.exec "thunderbird &"
+}
+Menu Office
+{
+"LibreOffice Writer" f.exec "loffice --writer&"
+"LibreOffice Impress" f.exec "loffice --impress&"
+}
+
+Menu DtRootMenu
+{
+    "Workspace Menu"                    f.title
+    "Internet"                f.menu    "Internet"
+    "Office"                f.menu    "Office"
+     no-label                           f.separator
+     no-label                           f.separator
+    "Shuffle Up"                        f.circle_up
+    "Shuffle Down"                      f.circle_down
+    "Refresh"                           f.refresh
+    "Minimize/Restore Front Panel"      f.toggle_frontpanel
+     no-label                           f.separator
+    "Restart Workspace Manager..."      f.restart
+     no-label                           f.separator
+    "Log out..."                        f.action ExitSession
+}
+
+

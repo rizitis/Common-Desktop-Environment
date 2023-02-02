@@ -1,0 +1,48 @@
+mv desktop_approots.tgz /etc/
+tar -xzvf desktop_approots.tgz
+cd desktop_approots
+sh integrate_all_apps.sh
+
+logout and login back again. Click on the Application Manager (third icon from the right end of the panel). Now you can populate the panel's submenus
+with apps by dragging them from the Application Manager to the "Install Icon" entry on the subpanels.
+
+If you do not want all my app groups you can de-integrate them. Say you do not want the XXXX group. Do as root:
+
+cd /etc/desktop_approots/XXXX/
+sh deintegrateXXXX.sh
+
+logout and login.
+	
+Table of contents
+Why CDE ? We are not in the nineties anymore...
+Is it usable as a modern desktop? Where are my popular apps?
+Mouse scroll
+Save more lines in Terminal
+Window Focus Policy
+    Click to raise
+Sound control
+Can I add menu items to the root menu?
+How to deal with USB drives CDs etc
+How to manage ethernet and wifi networks?
+Configure DtLogin
+Non CDE applications
+
+Internationalization
+Fonts
+Keyboard
+Where is the keyboard indicator?
+Can I have menus in my language?
+
+LTSP
+Fixing the mouse cursor at login
+Fonts in LTSP
+Mount remote media
+
+
+
+
+
+
+
+
+https://myria.math.aegean.gr/~atsol/newpage-en/software/cde/index.html

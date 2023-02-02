@@ -1,0 +1,12 @@
+CONTROL MonitorUSBkeys
+{
+TITLE MonitorUSBkeys
+TYPE file
+CONTAINER_TYPE SUBPANEL
+CONTAINER_NAME Home
+POSITION_HINTS last
+FILE_NAME /media/$USER
+MONITOR_TYPE file
+ICON USBdrivedisconnected
+ALTERNATE_ICON USBdriveconnected
+}
