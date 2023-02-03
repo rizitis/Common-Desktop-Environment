@@ -12,6 +12,7 @@ fdevmon="killall devmon"
 fsetxkb=" setxkbmap -option grp:alt_shift_toggle -option terminate:ctrl_alt_bksp -option grp_led:scroll -option eurosign:5 -option eurosign:e -option ctrl:swapcaps -layout us,gr"
 fkillx="killall xxkb"
 fxx="xxkb&"
+dtprof="DTSOURCEPROFILE=true"
 
 
 mkdir -p /home/"$USER"/.dt/
@@ -29,6 +30,7 @@ chmod +x /home/"$USER"/.dt/sessions/sessione*
 echo "export TERM=xterm-256color" >> /home/"$USER"/.bashrc
 mkdir -p home/"$USER"/.dtprofile
 cp /usr/dt/config/sys.dtprofile home/"$USER"/.dtprofile
+echo "$dtprof" >>  home/"$USER"/.dtprofile
 
 
 
