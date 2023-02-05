@@ -128,8 +128,6 @@ find /var/dt/appconfig/appmanager/ -depth -not -path "/var/dt/appconfig/appmanag
 cp "$CWD"/cde.desktop /usr/share/xsessions/
 make install DESTDIR="$PKG"
 
-
-chmod +x /usr/share/xsessions/cde.desktop
 # Don't ship .la files:
 rm -f "$PKG"/{,usr/}lib${LIBDIRSUFFIX}/*.la
 
