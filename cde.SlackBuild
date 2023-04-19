@@ -26,10 +26,10 @@
 
 cd "$(dirname "$0")" ; CWD=$(pwd)
 
-PRGNAM=cde		# replace with name of program
-VERSION=${VERSION:-2.5.1}	# replace with version of program
+PRGNAM=cde		
+VERSION=${VERSION:-2.5.1}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SCDE}		# the "_SBo" is required
+TAG=${TAG:-_SCDE}		
 PKGTYPE=${PKGTYPE:-tgz}
 JOBS=-j$(nproc)
 # Automatically determine the architecture we're building on:
@@ -68,10 +68,7 @@ else
   LIBDIRSUFFIX=""
 fi
 
-set -e # Exit on most errors
-# If you prefer to do selective error checking with
-#   command || exit 1
-# then that's also acceptable.
+set -e 
 
 rm -rf "$PKG"
 mkdir -p "$TMP" "$PKG" "$OUTPUT"
@@ -92,15 +89,10 @@ Clear=Exec=/usr/dt/bin/Xsession
 NOClear=Exec=/usr/bin/startcdesession.sh
 # Optional patch not building docs... 
 patch -Np1 -i "$CWD"/Makefile-am.patch
-# Your application will probably need different configure flags;
-# these are provided as an example only.
-# Be sure to build only shared libraries unless there's some need for
-# static.
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-# Compile the application and install it into the $PKG directory
 ./autogen.sh
-# Escape from .la as deps. Libtools not building whitout this...lalalalala
+# Escape from last century .la deps.... Libtools are here and not building whitout this...la la lalala...lalalala
 patch -Np1 -i "$CWD"/configure.patch
 ./configure
 make all WARNINGS_AS_ERRORS=y "$JOBS"
@@ -131,39 +123,21 @@ make install DESTDIR="$PKG"
 # Don't ship .la files:
 rm -f "$PKG"/{,usr/}lib${LIBDIRSUFFIX}/*.la
 
-# Strip binaries and libraries - this can be done with 'make install-strip'
-# in many source trees, and that's usually acceptable if so, but if not,
-# use this:
 find "$PKG" -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-
-# Remove perllocal.pod and other special files that don't need to be installed,
-# as they will overwrite what's already on the system.  If this is not needed,
-# remove it from the script.
-# Remove 'special' files
 find "$PKG" -name perllocal.pod \
   -o -name ".packlist" \
   -o -name "*.bs" \
   | xargs rm -f
 
-# Copy program documentation into the package
-# The included documentation varies from one application to another, so be sure
-# to adjust your script as needed
-# Also, include the SlackBuild script in the documentation directory
 mkdir -p "$PKG"/usr/doc/$PRGNAM-"$VERSION"
 cp -a HISTORY COPYING CONTRIBUTORS README.md  \
   "$PKG"/usr/doc/$PRGNAM-"$VERSION"
 cat "$CWD"/$PRGNAM.SlackBuild > "$PKG"/usr/doc/$PRGNAM-"$VERSION"/$PRGNAM.SlackBuild
-
-# Copy the slack-desc (and a custom doinst.sh if necessary) into ./install
 mkdir -p "$PKG"/install
 cat "$CWD"/slack-desc > "$PKG"/install/slack-desc
 cat "$CWD"/doinst.sh > "$PKG"/install/doinst.sh
 
-# Make the package; be sure to leave it in $OUTPUT
-# If package symlinks need to be created during install *before*
-# your custom contents of doinst.sh runs, then add the -p switch to
-# the makepkg command below -- see makepkg(8) for details
 cd "$PKG"
 /sbin/makepkg -l y -c n "$OUTPUT"/$PRGNAM-"$VERSION"-"$ARCH"-"$BUILD""$TAG"."$PKGTYPE"
